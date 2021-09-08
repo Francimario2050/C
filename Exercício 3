@@ -1,0 +1,47 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAMANHO_FILA 50
+
+struct fila {
+    int itens [TAMANHO_FILA];
+    int frente;
+    int atras;
+};
+
+void inserirNumero (struct fila *pq, int x) {
+    if(pq -> atras +1 >= TAMANHO_FILA) {
+    } else
+        pq->itens[pq->atras++] = x;
+}
+
+int main()
+{
+    struct fila minhaFila;
+    minhaFila.frente = 0;
+    minhaFila.atras = 0;
+    
+    
+    inserirNumero(&minhaFila,654);
+    inserirNumero(&minhaFila,762);
+    inserirNumero(&minhaFila,537);
+    inserirNumero(&minhaFila,482);
+    inserirNumero(&minhaFila,566);
+    inserirNumero(&minhaFila,855);
+    inserirNumero(&minhaFila,737);
+    inserirNumero(&minhaFila,125);
+    inserirNumero(&minhaFila,987);
+    
+    printf("\n Item 1 da fila: %d", minhaFila.itens[0]);
+    printf("\n Item 2 da fila: %d", minhaFila.itens[1]);
+    printf("\n Item 3 da fila: %d", minhaFila.itens[2]);
+    printf("\n Item 4 da fila: %d", minhaFila.itens[3]);
+    printf("\n Item 5 da fila: %d", minhaFila.itens[4]);
+    printf("\n Item 6 da fila: %d", minhaFila.itens[5]);
+    printf("\n Item 7 da fila: %d", minhaFila.itens[6]);
+    printf("\n Item 8 da fila: %d", minhaFila.itens[7]);
+    printf("\n Item 9 da fila: %d", minhaFila.itens[8]);
+    
+    return 0;
+}
