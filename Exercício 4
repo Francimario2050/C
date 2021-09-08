@@ -1,0 +1,67 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAMANHO_FILA 50
+
+struct fila {
+  int itens[TAMANHO_FILA];
+  int frente;
+  int atras;
+};
+
+int verificarndo(struct fila *xy) {
+    if(xy->frente != xy->atras) {
+        return 0;
+    } else
+        return 1;
+}
+
+void inserir (struct fila *xy, int x) {
+    int val;
+    int valV=1 ;
+    int vfinal;
+   
+    if(xy->atras >= TAMANHO_FILA) {
+        printf("\n Fila encheu");
+        exit(1);
+    } else {
+        for(int i=1; i<=x; i++) {
+           
+            val=i*valV;
+            valV = val;
+            vfinal = val;
+        }    
+    xy->itens[xy->atras++] = vfinal;
+    }
+}
+
+int tamanho (struct fila *xy){
+    return xy->atras;
+}
+
+void imprimir (struct fila *xy){
+    for(int i=0; i<tamanho(xy); i++){
+   
+        printf("\n Item da fila %d", xy->itens[i]);        
+    }
+
+}
+
+int main()
+{
+
+    struct fila minhaFila;
+    minhaFila.frente = 0;
+    minhaFila.atras = 0;
+    int valorReal;
+    for(int f=0; f<TAMANHO_FILA; f++){
+
+            printf("\n Insira um fatorial. \n");
+            scanf(" %d", &valorReal);
+            inserir(&minhaFila, valorReal);
+            imprimir(&minhaFila);
+            
+    }    
+    return 0;
+}
