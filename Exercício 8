@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAMANHO_FILA 50
+struct fila{
+ int itens[TAMANHO_FILA];
+ int frente;
+ int atras;
+};
+int verificando(struct fila *xy){
+ if(xy->frente != xy->atras){
+ return 0;
+ }else
+ return 1;
+}
+int frente (struct fila *xy){
+ return xy->itens[0];
+}
+void inserir (struct fila *xy, int x){
+ if(xy->atras >= TAMANHO_FILA){
+ printf("\n A fila encheu.");
+ exit(1);
+ }else
+ 
+ xy->itens[xy->atras++] = x;
+ 
+}
+int tamanho (struct fila *xy){
+ return xy->atras;
+}
+void imprimir (struct fila *xy){
+ for(int i=0; i<tamanho(xy); i++){
+ 
+ printf("\n O tempo é: %d ", xy->itens[i]); 
+ }
+}
+int remover(struct fila *xy){
+ 
+ if(verificando(xy)){
+ printf("\n Não tem nada aqui.");
+ 
+ }
+ 
+ int x = frente(xy);
+ 
+ for(int i = 0; i<tamanho(xy); i++){
+ xy->itens[i] = xy->itens[i+1];
+ 
+ }
+ 
+ xy->atras--;
+ return x;
+ 
+}
+int main(){
+ struct fila minhaFila;
+ minhaFila.frente = 0;
+ minhaFila.atras = 0;
+ int valorReal;
+ int numeros;
+ for(int f=0; f<TAMANHO_FILA; f++){
+ printf("\n Escolha uma opção");
+ printf("\n 1: Adicionar o processo");
+ printf("\n 2: Imprimir o processoprocesso");
+ printf("\n 3: Apagar o processo");
+ printf("\n 4: Terminar o processo \n");
+ scanf("\n %d", &numeros);
+ 
+ 
+ switch(numeros){
+ case 1:
+ printf("\n Qual o tempo do processo? \n");
+ scanf(" %d", &valorReal);
+ inserir(&minhaFila, valorReal);
+ 
+ break;
+ 
+ case 2:
+ 
+ imprimir(&minhaFila);
+ break;
+ 
+ case 3:
+ 
+ remover(&minhaFila);
+ break;
+ 
+ case 4:
+ 
+ printf("\n Acabou a fila.");
+ f=TAMANHO_FILA; 
+ break;
+ }
+} 
+ return 0;
+}
